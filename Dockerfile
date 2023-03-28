@@ -1,4 +1,4 @@
-FROM node:19-alpine3.16 As development
+FROM node:16-alpine As development
 
 WORKDIR /usr/src/app
 
@@ -7,7 +7,7 @@ COPY package*.json ./
 ARG NPM_AUTH_TOKEN
 RUN /bin/echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
 
-RUN npm install
+RUN npm install --force
 
 COPY . .
 
