@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    container_name: admin-frontend
+    restart: always
+    build:
+      context: .
+    command: serve -l 8000 -s dist
+    ports:
+      - 8000:8000
