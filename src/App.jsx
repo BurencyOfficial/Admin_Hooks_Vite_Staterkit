@@ -1,46 +1,39 @@
-import PropTypes from "prop-types";
-import React from "react";
+// Import scss
+import "./assets/scss/theme.scss";
 
-import { Routes, Route } from "react-router-dom";
-import { connect } from "react-redux";
-
-import { useSelector } from "react-redux";
-
+import { Route, Routes } from "react-router-dom";
 // Import Routes all
 import { authProtectedRoutes, publicRoutes } from "./routes";
 
 // Import all middleware
 import Authmiddleware from "./routes/route";
-
-// layouts Format
-import VerticalLayout from "./components/VerticalLayout/";
 import HorizontalLayout from "./components/HorizontalLayout/";
 import NonAuthLayout from "./components/NonAuthLayout";
-
-// Import scss
-import "./assets/scss/theme.scss";
-
+import PropTypes from "prop-types";
+import React from "react";
+// layouts Format
+import VerticalLayout from "./components/VerticalLayout/";
+import { connect } from "react-redux";
+// import fakeBackend from "/src/helpers/AuthType/fakeBackend";
 // Import Firebase Configuration file
-// import { initFirebaseBackend } from "./helpers/firebase_helper"
-
-import fakeBackend from "/src/helpers/AuthType/fakeBackend";
+import { initFirebaseBackend } from "./helpers/firebase_helper"
+import { useSelector } from "react-redux";
 
 // Activating fake backend
-fakeBackend();
+// fakeBackend();
 
-// const firebaseConfig = {
-//   apiKey: import.meta.env.VITE_APP_APIKEY,
-//   authDomain: import.meta.env.VITE_APP_AUTHDOMAIN,
-//   databaseURL: import.meta.env.VITE_APP_DATABASEURL,
-//   projectId: import.meta.env.VITE_APP_PROJECTID,
-//   storageBucket: import.meta.env.VITE_APP_STORAGEBUCKET,
-//   messagingSenderId: import.meta.env.VITE_APP_MESSAGINGSENDERID,
-//   appId: import.meta.env.VITE_APP_APPID,
-//   measurementId: import.meta.env.VITE_APP_MEASUREMENTID,
-// };
+const firebaseConfig = {
+  apiKey: "AIzaSyBM0I-NmGLWrCGJhbIATUPRSCnYPwIHeo4",
+  authDomain: "amr-dev-ace75.firebaseapp.com",
+  projectId: "amr-dev-ace75",
+  storageBucket: "amr-dev-ace75.appspot.com",
+  messagingSenderId: "362492767074",
+  appId: "1:362492767074:web:41307982218509b57a5a3b",
+  measurementId: "G-QJQF284QG2"
+};
 
 // init firebase backend
-// initFirebaseBackend(firebaseConfig)
+initFirebaseBackend(firebaseConfig)
 
 const App = (props) => {
   const { layoutType } = useSelector((state) => ({

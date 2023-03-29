@@ -6,7 +6,7 @@ COPY package*.json ./
 
 ARG NPM_AUTH_TOKEN
 RUN /bin/echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
-
+RUN apk add --no-cache python3 py3-pip make g++
 RUN npm install --force
 
 COPY . .
