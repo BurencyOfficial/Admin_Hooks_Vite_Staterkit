@@ -23,13 +23,13 @@ import { useSelector } from "react-redux";
 // fakeBackend();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBM0I-NmGLWrCGJhbIATUPRSCnYPwIHeo4",
-  authDomain: "amr-dev-ace75.firebaseapp.com",
-  projectId: "amr-dev-ace75",
-  storageBucket: "amr-dev-ace75.appspot.com",
-  messagingSenderId: "362492767074",
-  appId: "1:362492767074:web:41307982218509b57a5a3b",
-  measurementId: "G-QJQF284QG2"
+  apiKey: "AIzaSyDjXKnxsOAaRqRbIHcvvmhB0L8c5a2kmTY",
+  authDomain: "market-maker-test.firebaseapp.com",
+  projectId: "market-maker-test",
+  storageBucket: "market-maker-test.appspot.com",
+  messagingSenderId: "387784142410",
+  appId: "1:387784142410:web:ba16f88e06ec3fbd8d40b3",
+  measurementId: "G-4KZVMDLCZ7"
 };
 
 // init firebase backend
