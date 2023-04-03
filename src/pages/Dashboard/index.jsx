@@ -10,7 +10,7 @@ import { withTranslation } from "react-i18next";
 const Dashboard = props => {
 
   //meta title
-  document.title = "Dashboard | Skote - React Admin & Dashboard Template";
+  document.title = "MM Bot";
 
   return (
     <React.Fragment>
@@ -21,6 +21,7 @@ const Dashboard = props => {
             title={props.t("Dashboards")}
             breadcrumbItem={props.t("Dashboard")}
           />
+          <div>Welcome to MM Bot</div>
           </Container>
           </div>
     </React.Fragment>
