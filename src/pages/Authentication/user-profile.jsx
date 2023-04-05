@@ -1,36 +1,32 @@
-import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Alert,
-  CardBody,
-  Button,
-  Label,
-  Input,
-  FormFeedback,
-  Form,
-} from "reactstrap";
-
 // Formik Validation
 import * as Yup from "yup";
-import { useFormik } from "formik";
 
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  Col,
+  Container,
+  Form,
+  FormFeedback,
+  Input,
+  Label,
+  Row,
+} from "reactstrap";
+import React, { useEffect, useState } from "react";
+// actions
+import { editProfile, resetProfileFlag } from "../../store/actions";
 //redux
-import { useSelector, useDispatch } from "react-redux";
-
-import withRouter from "../../components/Common/withRouter";
+import { useDispatch, useSelector } from "react-redux";
 
 //Import Breadcrumb
 import Breadcrumb from "../../components/Common/Breadcrumb";
-
 import avatar from "../../assets/images/users/avatar-1.jpg";
-// actions
-import { editProfile, resetProfileFlag } from "../../store/actions";
+import { useFormik } from "formik";
+import withRouter from "../../components/Common/withRouter";
 
 const UserProfile = (props) => {
-
   //meta title
   document.title = "Profile | Skote - React Admin & Dashboard Template";
 
@@ -40,25 +36,16 @@ const UserProfile = (props) => {
   const [name, setname] = useState("");
   const [idx, setidx] = useState(1);
 
-  const { error, success } = useSelector(state => ({
+  const { error, success } = useSelector((state) => ({
     error: state.Profile.error,
     success: state.Profile.success,
   }));
   useEffect(() => {
     if (localStorage.getItem("authUser")) {
       const obj = JSON.parse(localStorage.getItem("authUser"));
-      if (import.meta.env.VITE_APP_DEFAULTAUTH === "firebase") {
-        setname(obj.displayName);
-        setemail(obj.email);
-        setidx(obj.uid);
-      } else if (
-        import.meta.env.VITE_APP_DEFAULTAUTH === "fake" ||
-        import.meta.env.VITE_APP_DEFAULTAUTH === "jwt"
-      ) {
-        setname(obj.username);
-        setemail(obj.email);
-        setidx(obj.uid);
-      }
+      setname(obj.displayName);
+      setemail(obj.email);
+      setidx(obj.uid);
       setTimeout(() => {
         dispatch(resetProfileFlag());
       }, 3000);
@@ -70,15 +57,15 @@ const UserProfile = (props) => {
     enableReinitialize: true,
 
     initialValues: {
-      username: name || '',
-      idx: idx || '',
+      username: name || "",
+      idx: idx || "",
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Please Enter Your UserName"),
     }),
     onSubmit: (values) => {
       dispatch(editProfile(values));
-    }
+    },
   });
 
   return (
@@ -140,11 +127,15 @@ const UserProfile = (props) => {
                     onBlur={validation.handleBlur}
                     value={validation.values.username || ""}
                     invalid={
-                      validation.touched.username && validation.errors.username ? true : false
+                      validation.touched.username && validation.errors.username
+                        ? true
+                        : false
                     }
                   />
                   {validation.touched.username && validation.errors.username ? (
-                    <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
+                    <FormFeedback type="invalid">
+                      {validation.errors.username}
+                    </FormFeedback>
                   ) : null}
                   <Input name="idx" value={idx} type="hidden" />
                 </div>
